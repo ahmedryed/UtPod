@@ -2,7 +2,7 @@
 
 #ifndef UTPOD_H
 #define UTPOD_H
-#include "Song.h"
+#include "song.h"
 
 //UtPod class declaration
 class UtPod
@@ -39,7 +39,7 @@ public:
          o returns a 0 if successful
          o returns -1 if not enough memory to add the song
 
-     precondition: s is a valid Song
+     precondition: s is a valid song
 
      input parms -
 
