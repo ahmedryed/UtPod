@@ -38,6 +38,28 @@ int UtPod::addSong(Song const &s){
 
 int UtPod::removeSong(Song const &s){
 
+    SongNode *prev, *cur;
+    Song searchSong = s;
+
+    //For loop to search through linked list
+    //Terminating conditions are getting to end of list or if song is found
+    for(cur = songs, prev = NULL; cur != NULL && cmpSongs(cur->s,s) != 0; prev = cur, cur = cur->next);
+
+    if(cur == NULL)
+        return -2;
+    if(prev == NULL)
+        songs = songs->next;
+    else{
+        prev->next = cur->next;
+        delete cur;
+    }
+    
+    return 0;
+}
+
+int UtPod::cmpSongs(Song const &cur, Song const &s){
+    //Returns 0 if song titles are the same
+    return strcmp(cur.getTitle().c_str(),s.getTitle().c_str());
 }
 
 void UtPod::shuffle(){
