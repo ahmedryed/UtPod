@@ -4,7 +4,7 @@
 
 #include "song.h"
 
-Song::Song(string inTitle,string inArtist,int inSize){
+Song::Song(string inArtist,string inTitle,int inSize){
     title = inTitle;
     artist = inArtist;
     size = inSize;
