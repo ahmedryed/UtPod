@@ -20,7 +20,7 @@ public:
     //default constructor
     Song();
 
-    Song(string inTitle,string inArtist,int inSize);
+    Song(string inArtist,string inTitle,int inSize);
 
     string getTitle() const;
 
