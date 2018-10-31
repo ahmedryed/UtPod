@@ -10,14 +10,14 @@ Song::Song(string inTitle,string inArtist,int inSize){
     size = inSize;
 }
 
-string Song::getTitle() {
+string Song::getTitle() const {
     return title;
 }
 
-string Song::getArtist() {
+string Song::getArtist() const {
     return artist;
 }
 
-int Song::getSize() {
+int Song::getSize() const {
     return size;
 }
