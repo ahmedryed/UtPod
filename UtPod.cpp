@@ -67,7 +67,18 @@ void UtPod::shuffle(){
 }
 
 void UtPod::showSongList(){
+    SongNode *ptr = songs;
 
+    std::cout << std::endl << "Song List: " << std::endl;
+
+    if(ptr == NULL)
+        std::cout << "No songs stored on UtPod" << std::endl<< std::endl;
+
+    for(ptr = songs; ptr != NULL; ptr = ptr->next){
+        std::cout << "Title: " << ptr->s.getTitle() << std::endl;
+        std::cout << "Artist: " << ptr->s.getArtist() << std::endl;
+        std::cout << std::endl;
+    }
 }
 
 void UtPod::sortSongList(){
