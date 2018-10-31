@@ -22,11 +22,11 @@ public:
 
     Song(string inTitle,string inArtist,int inSize);
 
-    string getTitle();
+    string getTitle() const;
 
-    string getArtist();
+    string getArtist() const;
 
-    int getSize();
+    int getSize() const;
 
 
 
