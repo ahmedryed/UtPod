@@ -58,8 +58,12 @@ int UtPod::removeSong(Song const &s){
 }
 
 int UtPod::cmpSongs(Song const &cur, Song const &s){
-    //Returns 0 if song titles are the same
-    return strcmp(cur.getTitle().c_str(),s.getTitle().c_str());
+     if(strcmp(cur.getTitle().c_str(),s.getTitle().c_str()) == 0 && strcmp(cur.getArtist().c_str(),s.getArtist().c_str()) == 0 ){
+        return 0;
+    }
+    else{
+        return -1;
+    }
 }
 
 void UtPod::shuffle(){
