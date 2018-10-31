@@ -134,6 +134,8 @@ public:
     */
 
     int getRemainingMemory();
+    
+    int cmpSongs(Song const &cur, Song const &s);
 
 
     ~UtPod();
