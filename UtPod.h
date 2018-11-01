@@ -98,7 +98,8 @@ public:
     */
 
     void sortSongList();
-
+    void swapNodes(SongNode** head_ref, SongNode* currX, SongNode* currY, SongNode* prevY);
+    SongNode* recurSelectionSort(SongNode* head);
 
     /* FUNCTION - void clearMemory
      * clears all the songs from memory
