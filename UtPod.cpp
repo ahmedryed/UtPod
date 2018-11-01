@@ -67,7 +67,96 @@ int UtPod::cmpSongs(Song const &cur, Song const &s){
 }
 
 void UtPod::shuffle(){
+int size = 0;
+    SongNode *ptr;
+    int target;
+    int dest;
+    int count = 0;
 
+    SongNode *targ1;
+    SongNode *targ2;
+    SongNode *prev1;
+    SongNode *prev2;
+    SongNode *temp;
+    
+    for(ptr = songs; ptr != NULL; ptr = ptr ->next)
+    {
+        size++;    
+    }
+    for(int i = 0; i < 20; i++)
+    {
+        target = rand() % size;
+        dest = rand() % size;
+
+        for(ptr = songs; ptr != NULL; ptr = ptr ->next)
+        {
+            if(count == target)
+            {
+                targ1 = ptr;
+            }
+            if(count == dest)
+            {
+                targ2 = ptr;
+            }
+            count ++;
+        }
+
+        count = 0;
+
+        for(ptr = songs; ptr != NULL; ptr = ptr ->next)
+        {
+            if(target == 0)
+            {
+                prev1 = ptr;
+            }
+            if(dest == 0)
+            {
+                prev2 = ptr;
+            }
+            if(target != 0 && count == target - 1)
+            {
+                prev1 = ptr;
+            }
+            if(dest != 0 && count == dest - 1)
+            {
+                prev2 = ptr;
+            }
+            count++;
+        }
+        count = 0;
+
+        if(target == 0 && dest != 0)
+        {
+            songs = targ2;
+            prev2->next = targ1;
+
+            temp = targ1->next;
+            targ1->next = targ2->next;
+            targ2->next = temp;
+        }
+
+        if(dest == 0 && target != 0)
+        {
+            songs =targ1;
+            prev1->next = targ2;
+
+            temp = targ1->next;
+            targ1->next = targ2->next;
+            targ2->next = temp;
+        }
+
+
+        if(target != 0 && dest != 0) 
+        {
+            temp = prev1->next;
+            prev1->next = prev2->next;
+            prev2->next = temp;
+
+            temp = targ1->next;
+            targ1->next = targ2->next;
+            targ2->next = temp;
+        }
+    }
 }
 
 void UtPod::showSongList(){
