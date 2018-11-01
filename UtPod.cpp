@@ -201,9 +201,15 @@ UtPod::SongNode* UtPod::recurSelectionSort(SongNode* head) {
     for (ptr = head; ptr->next != NULL; ptr = ptr->next) {
 
         // if true, then update 'min' and 'beforeMin'
-        if (strcmp(ptr->next->s.getTitle().c_str(),min->s.getTitle().c_str()) < 0) {
+        if (strcmp(ptr->next->s.getArtist().c_str(),min->s.getArtist().c_str()) < 0) {
             min = ptr->next;
             beforeMin = ptr;
+        }
+        else if (strcmp(ptr->next->s.getArtist().c_str(),min->s.getArtist().c_str()) == 0){
+            if (strcmp(ptr->next->s.getTitle().c_str(),min->s.getTitle().c_str()) < 0) {
+                min = ptr->next;
+                beforeMin = ptr;
+            }
         }
     }
 
