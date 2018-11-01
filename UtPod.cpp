@@ -86,7 +86,60 @@ void UtPod::showSongList(){
 }
 
 void UtPod::sortSongList(){
+//Code adapted from Geeks for Geeks Selection Sort
+    if(songs == NULL)
+        return;
 
+    songs = recurSelectionSort(songs);
+}
+
+UtPod::SongNode* UtPod::recurSelectionSort(SongNode* head) {
+//Code adapted from Geeks for Geeks Selection Sort
+    // if there is only a single node
+    if (head->next == NULL)
+        return head;
+
+    // 'min' - pointer to store the node having
+    // minimum data value
+    SongNode *min = head;
+
+    // 'beforeMin' - pointer to store node previous
+    // to 'min' node
+    SongNode *beforeMin = NULL;
+    SongNode *ptr;
+
+    // traverse the list till the last node
+    for (ptr = head; ptr->next != NULL; ptr = ptr->next) {
+
+        // if true, then update 'min' and 'beforeMin'
+        if (strcmp(ptr->next->s.getTitle().c_str(),min->s.getTitle().c_str()) < 0) {
+            min = ptr->next;
+            beforeMin = ptr;
+        }
+    }
+
+    // if 'min' and 'head' are not same,
+    // swap the head node with the 'min' node
+    if (min != head)
+        swapNodes(&head, head, min, beforeMin);
+
+    // recursively sort the remaining list
+    head->next = recurSelectionSort(head->next);
+    return head;
+}
+
+void UtPod::swapNodes(SongNode** head_ref, SongNode* currX, SongNode* currY, SongNode* prevY){
+//Code adapted from Geeks for Geeks Selection Sort
+    // make 'currY' as new head
+    *head_ref = currY;
+
+    // adjust links
+    prevY->next = currX;
+
+    // Swap next pointers
+    SongNode* temp = currY->next;
+    currY->next = currX->next;
+    currX->next = temp;
 }
 
 void UtPod::clearMemory(){
