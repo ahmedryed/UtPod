@@ -143,7 +143,14 @@ void UtPod::swapNodes(SongNode** head_ref, SongNode* currX, SongNode* currY, Son
 }
 
 void UtPod::clearMemory(){
+    SongNode *nxt;
 
+    for(nxt = songs; songs != NULL; songs = nxt){
+        nxt = songs->next;
+        delete songs;
+    }
+
+    songs = NULL;
 }
 
 int UtPod::getRemainingMemory(){
